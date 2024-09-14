@@ -22,9 +22,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Configure twrp common.mk
 $(call inherit-product, vendor/twrp/config/common.mk)
 
+# Boot control HAL
 PRODUCT_PACKAGES += \
     bootctrl.xiaomi_sm8550.recovery \
     android.hardware.boot@1.2-impl-qti.recovery
+    
+PRODUCT_PACKAGES_DEBUG += \
+    bootctl
 
 # SHIPPING API
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -37,3 +41,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
