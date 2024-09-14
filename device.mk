@@ -29,6 +29,15 @@ PRODUCT_PACKAGES += \
     
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
+    
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl-qti \
+    android.hardware.gatekeeper@1.0-service-qti
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.1-service-qti
 
 # SHIPPING API
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -45,3 +54,20 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe
+
+# QSE
+PRODUCT_PACKAGES += \
+    libQSEEComAPI \
+    libqdutils \
+    libqservice
+
+# Weaver
+PRODUCT_PACKAGES += \
+    android.hardware.weaver-service.nxp-qti
+
+PRODUCT_PACKAGES += \
+    android.hardware.weaver-V2-ndk
+
+PRODUCT_COPY_FILES += \
+    vendor/lib64/ese_weaver.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/ese_weaver.so
+

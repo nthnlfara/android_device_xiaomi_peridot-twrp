@@ -43,8 +43,21 @@ on fs
     mount none /tmp/persist /mnt/vendor/persist bind rec
     install_keyring
 
+service vendor.weaver-hal /vendor/bin/hw/android.hardware.weaver-service.nxp-qti
+    class hal
+    user system
+    group system
+    disabled
+
+service qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+
 on init
     start boot-hal-1-2
+    load_system_props
+    setprop ro.hardware.ese ese_weaver
 
 on boot
     setprop sys.usb.config adb
@@ -53,6 +66,7 @@ on property:twrp.modules.loaded=true
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+
     # Load ADSP firmware for PMIC
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
@@ -67,4 +81,4 @@ on property:vendor.sys.listeners.registered=true
     start vendor.secure_element
     start vendor.gatekeeper_default
     start vendor.keymint-qti
-    start vendor.weaver_nxp
+    start vendor.weaver-hal
