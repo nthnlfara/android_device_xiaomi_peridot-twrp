@@ -13,7 +13,7 @@ cc_prebuilt_library_shared {
     vendor: true,
     target: {
         android_arm64: {
-            srcs: ["vendor/lib64/ese_weaver.so"],
+            srcs: ["recovery/root/vendor/lib64/ese_weaver.so"],
         },
     },
     strip: {
