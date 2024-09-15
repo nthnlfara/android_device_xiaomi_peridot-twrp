@@ -7,3 +7,17 @@
 soong_namespace {
     imports: ["hardware/qcom-caf/bootctrl"],
 }
+
+cc_prebuilt_library_shared {
+    name: "ese_weaver",
+    vendor: true,
+    target: {
+        android_arm64: {
+            srcs: ["vendor/lib64/ese_weaver.so"],
+        },
+    },
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+}

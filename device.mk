@@ -68,6 +68,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.weaver-V2-ndk
 
-PRODUCT_COPY_FILES += \
-     $(DEVICE_PATH)/recovery/root/vendor/lib64/ese_weaver.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/ese_weaver.so
-
+PRODUCT_PACKAGES += \
+    ese_weaver
