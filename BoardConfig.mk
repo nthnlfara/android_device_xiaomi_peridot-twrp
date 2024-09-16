@@ -34,7 +34,7 @@ TARGET_USES_UEFI := true
 TARGET_BOARD_PLATFORM := xiaomi_sm8635
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno735
 QCOM_BOARD_PLATFORMS += xiaomi_sm8635
-#BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_HARDWARE := true
 
 # Kernel
 BOARD_KERNEL_PAGESIZE         := 4096
@@ -144,10 +144,11 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_EXTRA_LANGUAGES := true
-TW_DEFAULT_LANGUAGE := en_GB
+TW_DEFAULT_LANGUAGE := en
 TW_DEFAULT_BRIGHTNESS := 200
 TW_EXCLUDE_APEX := true
 TW_HAS_EDL_MODE := true
+
 # Haptic
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
@@ -158,4 +159,4 @@ TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko fts_touch_spi.ko qti_battery_char
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BATTERY_SYSFS_WAIT_SECONDS := 6
 TW_BACKUP_EXCLUSIONS := /data/fonts
-TW_DEVICE_VERSION := RedmiTurbo3 by Suyuan
+TW_DEVICE_VERSION := farashi

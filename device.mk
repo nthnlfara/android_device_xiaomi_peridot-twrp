@@ -45,4 +45,14 @@ PRODUCT_PACKAGES += \
     qcom_decrypt_fbe
 
 TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.1 \
+    android.hardware.keymaster@4.1
+    
+# Keymint
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint \
+    android.hardware.security.secureclock \
+    android.hardware.security.sharedsecret
+    
+# Keystore2
+PRODUCT_PACKAGES += \
+    android.system.keystore2
