@@ -36,4 +36,13 @@ PRODUCT_TARGET_VNDK_VERSION := 34
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH) \
+    hardware/qcom-caf/bootctrl
+
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.keymaster@4.1 \

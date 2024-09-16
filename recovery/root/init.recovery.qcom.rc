@@ -25,6 +25,13 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /vendor/etc/init/android.hardware.gatekeeper-service-qti.rc
+import /vendor/etc/init/android.hardware.secure_element-service.qti.rc
+import /vendor/etc/init/android.hardware.security.keymint-service-qti.rc
+import /vendor/etc/init/android.hardware.security.keymint-service.strongbox-nxp.rc
+import /vendor/etc/init/android.hardware.weaver-service.nxp.rc
+import /vendor/etc/init/qseecomd.rc
+
 on early-fs
     write /proc/sys/walt/sched_lib_name "recovery,magiskboot,Updater,updater,update_engine_sideload"
     write /proc/sys/walt/sched_lib_mask_force 255
@@ -45,21 +52,26 @@ on fs
 
 on init
     start boot-hal-1-2
+    start vendor.qseecomd
+    start vendor.keymint-strongbox
+    start vendor.keymint-qti
+    start vendor.weaver_nxp
+    start set_permissive
 
 on boot
     setprop sys.usb.config adb
+    start health-hal-2-1
 
 on property:twrp.modules.loaded=true
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
+
     # Load ADSP firmware for PMIC
     wait /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
-    start vendor.qseecomd
     start touch_report
-    start health-hal-2-1
     start vibratorfeature-hal-service
     umount /firmware
 
@@ -68,3 +80,28 @@ on property:vendor.sys.listeners.registered=true
     start vendor.gatekeeper_default
     start vendor.keymint-qti
     start vendor.weaver_nxp
+
+on property:crypto.ready=1
+    start vendor.qseecomd
+    start vendor.keymint-strongbox
+    start vendor.keymint-qti
+    start vendor.weaver_nxp
+    
+on property:ro.crypto.state=unencrypted
+    stop vendor.qseecomd
+    stop vendor.keymint-strongbox
+    stop vendor.keymint-qti
+    stop vendor.weaver_nxp
+
+service set_permissive /system/bin/set_permissive.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on property:crypto.ready=0
+    stop vendor.qseecomd
+    stop vendor.keymint-strongbox
+    stop vendor.keymint-qti
+    stop vendor.weaver_nxp
