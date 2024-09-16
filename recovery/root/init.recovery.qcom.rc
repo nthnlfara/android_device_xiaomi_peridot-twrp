@@ -100,6 +100,12 @@ service set_permissive /system/bin/set_permissive.sh
     oneshot
     seclabel u:r:recovery:s0
 
+service keystore2 /system/bin/keystore2 /data/misc/keystore
+    class early_hal
+    user keystore
+    group keystore readproc log
+    task_profiles ProcessCapacityHigh
+
 on property:crypto.ready=0
     stop vendor.qseecomd
     stop vendor.keymint-strongbox
