@@ -51,7 +51,8 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint \
     android.hardware.security.secureclock \
-    android.hardware.security.sharedsecret
+    android.hardware.security.sharedsecret \
+    android.system.keystore2-V1-ndk
     
 # Keystore2
 PRODUCT_PACKAGES += \
