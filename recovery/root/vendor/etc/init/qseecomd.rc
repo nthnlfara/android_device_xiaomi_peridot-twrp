@@ -3,7 +3,7 @@
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 
 #on init
-#    start vendor.qseecomd
+    start vendor.qseecomd
 
 service vendor.qseecomd /vendor/bin/qseecomd
     socket notify-topology stream 660 system drmrpc
