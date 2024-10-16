@@ -115,11 +115,11 @@ TW_FRAMERATE            := 60
 
 # TWRP notch offsets
 TW_STATUS_ICONS_ALIGN := center
-TW_Y_OFFSET := 99
-TW_H_OFFSET := -99
+TW_Y_OFFSET           := 99
+TW_H_OFFSET           := -99
 
 # Blacklist Goodix fingerprint. There's no reason to include this input in recovery
-TW_INPUT_BLACKLIST := "uinput-goodix"
+TW_INPUT_BLACKLIST      := "uinput-goodix"
 
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
@@ -128,12 +128,12 @@ TW_BRIGHTNESS_PATH      := "/sys/class/backlight/panel0-backlight/brightness"
 TW_LOAD_VENDOR_MODULES  += "fts_touch_spi.ko
 TW_LOAD_VENDOR_MODULES  += adsp_loader_dlkm.ko qti_battery_charger.ko"
 
-TW_BATTERY_SYSFS_WAIT_SECONDS := 6
-TW_EXCLUDE_DEFAULT_USB_INIT   := true
+TW_BATTERY_SYSFS_WAIT_SECONDS          := 6
+TW_EXCLUDE_DEFAULT_USB_INIT            := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
+TW_SUPPORT_INPUT_AIDL_HAPTICS         := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME  := "IVibrator/vibratorfeature"
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
 
 # TWRP - Crypto
