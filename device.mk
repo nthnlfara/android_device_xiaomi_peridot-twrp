@@ -29,6 +29,11 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl-qti.recovery \
     miui_prebuilt
 
+# Encryption
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
 # FastbootD support
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
@@ -48,8 +53,8 @@ PRODUCT_PACKAGES += \
     checkpoint_gc
 
 # API
-PRODUCT_SHIPPING_API_LEVEL  := 31
-PRODUCT_TARGET_VNDK_VERSION := 33
+PRODUCT_SHIPPING_API_LEVEL  := 34
+PRODUCT_TARGET_VNDK_VERSION := 34
 
 # Display Size & Density
 TARGET_SCREEN_HEIGHT  := 2400
@@ -143,7 +148,8 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_FORCE_KEYMASTER_VER          := true
 BOARD_USES_QCOM_FBE_DECRYPTION  := true
 PLATFORM_VERSION                := 99.87.36
-PLATFORM_VERSION_LAST_STABLE    := $(PLATFORM_VERSION)
+PLATFORM_VERSION_LAST_STABLE    := $(PLATFORM_VERSION) 
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 PLATFORM_SECURITY_PATCH := 2127-12-31
 VENDOR_SECURITY_PATCH   := $(PLATFORM_SECURITY_PATCH)
