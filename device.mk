@@ -32,7 +32,8 @@ PRODUCT_PACKAGES += \
 # Encryption
 PRODUCT_PACKAGES += \
     qcom_decrypt \
-    qcom_decrypt_fbe
+    qcom_decrypt_fbe \
+    android.system.keystore2
 
 # FastbootD support
 PRODUCT_PACKAGES += \
